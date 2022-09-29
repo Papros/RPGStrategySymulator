@@ -1,0 +1,76 @@
+#login-page-container {
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    background-clip: border-box;
+    background-color: rgba(30, 47, 55, 0.7);
+    background-blend-mode: soft-light;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    .app-button {
+        margin: 2% 4%;
+    }
+
+    .app-button:hover {
+        filter: brightness(2);
+    }
+
+    .info {
+        margin: 0% 1%;
+    }
+
+    .center-box {
+        display: flex;
+        height: 80%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-around;
+
+        div {
+            border-radius: 5px;
+            vertical-align: middle;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            height: 40%;
+        }
+
+        @media screen and (max-width: 540px){
+            width: 90%;
+
+            .app-button {
+                border: 2px solid rgb(255, 218, 30, 0.3);
+                background-color: rgba(30, 47, 55, 0.3);
+                padding: 10%;
+            }
+        }
+        
+        @media screen and (min-width: 540px){
+            width: 70%;
+
+            .app-button {
+                border: 5px solid rgb(255, 218, 30, 0.3);
+                background-color: rgba(30, 47, 55, 0.3);
+                padding: 3%;
+            }
+        }
+    }
+    
+    .footer {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        color: rgba(176, 177, 178, 0.3);
+        align-items: center;
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,9 @@
+<div id="container">
+
+  <app-loader-screen *ngIf="isRootLoaderActive(); else application"></app-loader-screen>
+
+  <ng-template #application>
+    <router-outlet></router-outlet>
+  </ng-template>
+
+</div>
