@@ -1,0 +1,23 @@
+<div class="map-container">
+  <map-canvas></map-canvas>
+</div>
+
+<ng-template>
+  <div class="map-inner-container">
+    <div class="map-row" *ngFor="let map_row of mapTiles">
+      <ng-container *ngTemplateOutlet="mapRow; context: {row: map_row}"></ng-container>
+    </div>    
+  </div>
+</ng-template>
+
+<ng-template #mapRow let-row="row">
+  <div class="map-tile" *ngFor="let tile of row">
+    <ng-container *ngTemplateOutlet="mapTile; context: {tile: tile}"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #mapTile let-tile="tile">
+  <span class="inner-clip">
+    <img [src]="getTileStyles('0')"/>
+  </span>
+</ng-template>

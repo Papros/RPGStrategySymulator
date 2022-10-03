@@ -33,7 +33,7 @@ import { GAME_STATE_MANAGER, IGameStateManager } from "@app/shared/game-state-ma
         
         this.gameStateManager.getDistrictsManager().fetchItems().subscribe((items:IDistrict[]) => {
           this.map = items;
-          console.log('Kingdoms fetched...');
+          console.log('Districts fetched...');
           this.cdr.markForCheck();
         })
     }

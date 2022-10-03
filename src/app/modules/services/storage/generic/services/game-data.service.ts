@@ -9,6 +9,7 @@ import { IGameDataService } from "../interfaces/game-data-service.interface";
 export abstract class GameDataService<T extends IGameDataItem> implements IGameDataService<IGameDataItem>, OnInit {
 
     protected items: T[];
+    protected loggerPrefix: string = "GameDataService<T>";
 
     public constructor(
         @Inject(BACKEND_CLIENT_SERVICE) protected backendClient: IBackendClient, 

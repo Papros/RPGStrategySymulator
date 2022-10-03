@@ -27,6 +27,7 @@
       "@app/enums": ["src/app/modules/app/enums/index"],
       "@app/app-module": ["src/app/modules/app/app.module.ts"],
       "@app/pages": ["src/app/modules/app/pages/index"],
+      "@app/features/map-view": ["src/app/modules/features/map-view/index"],
       "@app/shared/logger": ["src/app/modules/shared/logger/index"],
       "@app/shared/loader": ["src/app/modules/shared/loader/index"],
       "@app/shared/loader-screen": ["src/app/modules/shared/loader-screen/index"],

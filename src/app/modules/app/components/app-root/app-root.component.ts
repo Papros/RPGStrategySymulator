@@ -15,7 +15,7 @@ export class AppRootComponent implements OnInit {
   }
 
   public isRootLoaderActive() {
-    console.log('Loader: '+this.loaderService.getLoaderState(LoaderToken.RootLoader));
+    //console.log('Loader: '+this.loaderService.getLoaderState(LoaderToken.RootLoader));
     return this.loaderService.getLoaderState(LoaderToken.RootLoader);
   }
 

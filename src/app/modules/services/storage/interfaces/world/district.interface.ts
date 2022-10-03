@@ -1,5 +1,7 @@
 import { IGameDataItem } from "../generic";
 
 export interface IDistrict extends IGameDataItem {
-    name: string;
+  id: string;
+  kingdomID: string;
+  position: { x: number, y: number}; 
 }
