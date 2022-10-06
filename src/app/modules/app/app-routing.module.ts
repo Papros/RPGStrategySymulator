@@ -25,7 +25,7 @@ const routes: Routes = [{
   component: UserPageComponent,
 }, { 
   path: '**',
-  redirectTo: `/${ AppRoutes.MainMenu }`,
+  redirectTo: `/${ AppRoutes.UserPanel}`,
 }];
 
 @NgModule({

@@ -27,13 +27,11 @@ import { GAME_STATE_MANAGER, IGameStateManager } from "@app/shared/game-state-ma
     ngOnInit(): void {
         this.gameStateManager.getKingdomsManager().fetchItems().subscribe((items:IKingdom[]) => {
           this.kingdomsList = items;
-          console.log('Kingdoms fetched...');
           this.cdr.markForCheck();
         })
         
         this.gameStateManager.getDistrictsManager().fetchItems().subscribe((items:IDistrict[]) => {
           this.map = items;
-          console.log('Districts fetched...');
           this.cdr.markForCheck();
         })
     }

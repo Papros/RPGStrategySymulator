@@ -31,11 +31,9 @@ export class BasicMapPanelComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.logger.debug("Map init.", this.logPrefix );
-    console.log("Map init...")
     this.mapSubscription$ = this.mapService.subscribeMap().subscribe((map: IMapTile[][]) => {
       this.mapTiles = map;
-      this.logger.debug("Map update.", this.logPrefix );
-      console.log(`Map update: [${this.mapTiles.length}][${this.mapTiles[0]?.length}]`)
+      this.logger.debug(`Map update: [${this.mapTiles.length}][${this.mapTiles[0]?.length}]`, this.logPrefix );
       this.cdr.markForCheck();
     });
   }

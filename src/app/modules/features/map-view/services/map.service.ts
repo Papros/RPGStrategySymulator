@@ -45,7 +45,6 @@ export class MapService implements IMapService, OnInit, OnDestroy{
     let sub$_1 = this.gameStateManager.getKingdomsManager().fetchItems().subscribe((items:IKingdom[]) => {
   
       this.logger.info('Kingdoms fetched.', this.logPrefix);
-      console.log("Kingdoms fetched.")
 
       if(items != this.kingdomsList) {
         this.kingdomsList = items;
@@ -61,7 +60,6 @@ export class MapService implements IMapService, OnInit, OnDestroy{
     let sub$_2 = this.gameStateManager.getDistrictsManager().fetchItems().subscribe((items:IDistrict[]) => {
       
       this.logger.info('District fetched.', this.logPrefix);
-      console.log("District  fetched.")
 
       if(this.districtList != items){
         this.districtList = items;
@@ -79,7 +77,6 @@ export class MapService implements IMapService, OnInit, OnDestroy{
 
   generateEmptyMap(x: number, y: number) : IMapTile[][] {
     this.logger.debug(`generateEmptyMap(${x}, ${y})`, this.logPrefix);
-    console.log(`generateEmptyMap(${x}, ${y})`);
     let emptyMap: IMapTile[][] = [];
     let emptyRow: IMapTile[] = [];
     let emptyTile: IMapTile = {
@@ -111,7 +108,6 @@ export class MapService implements IMapService, OnInit, OnDestroy{
           position: district.position,
         };
       }
-      console.log("Map next()");
       this.mapSubject.next(this.map);
     } else {
       this.logger.debug('buildMap() called but not all list are fetched yet...', this.logPrefix);
