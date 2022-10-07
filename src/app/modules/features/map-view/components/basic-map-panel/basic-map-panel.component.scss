@@ -1,52 +1,12 @@
 .map-container {
   width: 100%;
   height: 100%;
-  margin: 66px;
-  border: 2px solid #fff;
+  padding: 1%;
 }
 
 .map-inner-container {
-  display: flex;
-  flex-direction: row;
-  background-color: #5656aa;
+  border: 4px solid rgb(89, 52, 5);
+  background-color: #3277e7;
   width: 100%;
   height: 100%;
-
-  .map-row {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    width: 100%;
-    
-    .map-tile {
-      flex: 1;
-      height: 100%;
-      border: 1px solid #000;
-      background-repeat: no-repeat;
-      background-clip: border-box;
-    }
-
-    img {
-      background-color: #000;
-      border: solid;
-      vertical-align: bottom;
-    }
-    
-  }
-
-  .map-row:nth-child(odd) {
-   margin-bottom: 0;
-  }
-
-  .map-row:nth-child(even) {
-    margin-bottom: 0;
-    margin-top: 10%;
-    margin-left: -10%;
-   }
-}
-
-.map-tile:hover {
-  filter: brightness(1.5);
-  background-color: #7878dd;
-  border: 1px solid #fff;
 }

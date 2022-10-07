@@ -11,7 +11,9 @@ import { BackendClientModule } from '@app/shared/backend-client';
 import { DistrictsServiceModule, KingdomsServiceModule } from '@app/services/storage/game';
 import { GameStateManagerModule } from '@app/shared/game-state-manager';
 import { HttpClientModule } from '@angular/common/http';
-import { MapPanelModule } from '../features/map-view/map-view.module';
+import { MapPanelModule } from '@app/features/map-view';
+import { DistrictPanelModule } from '@app/features/district-panel';
+import { SidePanelModule } from '@app/features/side-panel';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -27,6 +29,8 @@ import { MapPanelModule } from '../features/map-view/map-view.module';
     AppRoutingModule,
     LoaderScreenModule,
     HttpClientModule,
+    DistrictPanelModule,
+    SidePanelModule,
     MapPanelModule.forRoot(),
     BackendClientModule.forRoot(),
     LoaderModule.forRoot(),

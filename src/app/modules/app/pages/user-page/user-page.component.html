@@ -1,1 +1,16 @@
-<basic-map-panel></basic-map-panel>
+<div class="user-page-container">
+
+    <side-panel [isLeft]="true" (hide)="hideSidePanel($event, true)" 
+        class="left-side-section" [ngClass]="{'left-section-hidden': isLeftHidden}">
+        LEWY
+    </side-panel>
+
+    <div class="map-section">
+        <basic-map-panel (selectedMapTile)="selectedTile($event)"></basic-map-panel>
+    </div>
+
+    <side-panel [isLeft]="false" (hide)="hideSidePanel($event, false)" 
+        class="right-side-section" [ngClass]="{'hidden-section': isRightHidden}">
+        <district-panel [district]="selectedDistrict" ></district-panel>
+    </side-panel>
+</div>

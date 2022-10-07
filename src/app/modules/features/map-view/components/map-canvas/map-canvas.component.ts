@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Inject, Input } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, Inject, Input, Output, EventEmitter } from "@angular/core";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
 import { IMapTile } from "../..";
 
@@ -13,6 +13,7 @@ export class MapCanvasComponent implements OnInit {
   mapCanvas: ElementRef<HTMLCanvasElement> | undefined;
 
   @Input() gameMap: IMapTile[][] = [];
+  @Output() selectedMapTile = new EventEmitter<IMapTile>();
 
   //DRAWING PROP
   private canvasWidth: number;
@@ -196,7 +197,11 @@ export class MapCanvasComponent implements OnInit {
   private onClick(mouseEv: MouseEvent) {
     const regionKey = this.getRegionKey(mouseEv.offsetX, mouseEv.offsetY)
     const mapTile = this.regionMap.get(regionKey);
-    console.log(`Selected: (${ mapTile?.position.x }, ${mapTile?.position.y})[${mapTile?.id}] => ${mapTile?.kingdom?.name}`);
+    this.loggerService.debug(
+      `Selected: (${ mapTile?.position.x }, ${mapTile?.position.y})
+      [${mapTile?.id}] => ${mapTile?.kingdom?.name}`,
+      this.loggerPrefix);
+    this.selectedMapTile.emit(mapTile);
   }
 
   private onMove(mouseEv: MouseEvent) {

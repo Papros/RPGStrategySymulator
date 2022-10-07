@@ -4,19 +4,23 @@ export class LoggerService implements ILoggerService {
   private level = '0';
 
   error (msg: any, prefix: string): void {
-    console.error(this.format(msg,this.level,prefix));
+    //console.error(this.format(msg,this.level,prefix));
+    console.log(this.format(msg,this.level,prefix));
   }
 
   warning (msg: any, prefix: string): void {
-    console.warn(this.format(msg,this.level,prefix));
+    //console.warn(this.format(msg,this.level,prefix));
+    console.log(this.format(msg,this.level,prefix));
   }
 
   info (msg: any, prefix: string): void {
-    console.info(this.format(msg,this.level,prefix));
+    //console.info(this.format(msg,this.level,prefix));
+    console.log(this.format(msg,this.level,prefix));
   }
 
   debug (msg: any, prefix: string): void {
-    console.debug(this.format(msg,this.level,prefix));
+    //console.debug(this.format(msg,this.level,prefix));
+    console.log(this.format(msg,this.level,prefix));
   }
 
   private format (msg: string, level: string, prefix: string): string {

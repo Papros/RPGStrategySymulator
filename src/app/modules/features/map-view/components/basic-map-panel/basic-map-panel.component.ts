@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, ChangeDetectorRef, ElementRef, ViewChild } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, ChangeDetectorRef, ElementRef, ViewChild, Output, EventEmitter } from "@angular/core";
 import { SafeStyle } from "@angular/platform-browser";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
 import { Subscription } from "rxjs";
@@ -16,6 +16,8 @@ export class BasicMapPanelComponent implements OnInit, OnDestroy {
   private readonly logPrefix = "BasicMapPanel"
   public mapTiles: IMapTile[][] = [];
   public mapSubscription$: Subscription = new Subscription();
+
+  @Output() selectedMapTile = new EventEmitter<IMapTile>();
 
   private tilesBackground = {
     basic: 'tile.png',
@@ -40,6 +42,11 @@ export class BasicMapPanelComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.mapSubscription$?.unsubscribe();
+  }
+
+  public selectMapTile(tile: IMapTile) {
+    this.logger.debug(`Selected: ${ tile.id }`, this.logPrefix);
+    this.selectedMapTile.emit(tile);
   }
 
   public getTileStyles(tileId: string): string {

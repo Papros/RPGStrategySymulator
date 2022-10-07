@@ -10,7 +10,7 @@ import {
 const routes: Routes = [{
   path: '',
   pathMatch: 'full',
-  redirectTo: `/${ AppRoutes.MainMenu }`,
+  redirectTo: `/${ AppRoutes.UserPanel }`,
 }, {
   path: AppRoutes.MainMenu,
   component: MainMenuPageComponent

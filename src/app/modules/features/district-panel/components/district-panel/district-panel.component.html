@@ -1,0 +1,29 @@
+<div class="district-container">
+    <div class="panel-container">
+        <div class="panel-title highlight">PROWINCJA</div>
+        <div class="light-separator"></div>
+        <div class="panel-metadata-container highlight">
+            <div class="panel-metadata"> ID: {{ district.id }} </div>
+            <div class="panel-metadata"> 
+                POSITION: ( {{ district.position.x }}, {{ district.position.y }})
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="basic-data-container">
+            <div class="basic-data highlight">
+                {{ district.kingdom ? district.kingdom.name : "No mans land" }}
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="basic-data-container">
+            <div class="basic-data highlight">
+                {{ district.district.terrain.type }}
+            </div>
+            <div class="light-separator"></div>
+            <div class="basic-data highlight">
+                {{ district.district.resource.type}}
+            </div>
+            <div class="light-separator"></div>
+        </div>
+        <div class="separator"></div>
+</div>

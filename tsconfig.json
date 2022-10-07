@@ -28,6 +28,8 @@
       "@app/app-module": ["src/app/modules/app/app.module.ts"],
       "@app/pages": ["src/app/modules/app/pages/index"],
       "@app/features/map-view": ["src/app/modules/features/map-view/index"],
+      "@app/features/district-panel": ["src/app/modules/features/district-panel/index"],
+      "@app/features/side-panel": ["src/app/modules/features/side-panel/index"],
       "@app/shared/logger": ["src/app/modules/shared/logger/index"],
       "@app/shared/loader": ["src/app/modules/shared/loader/index"],
       "@app/shared/loader-screen": ["src/app/modules/shared/loader-screen/index"],

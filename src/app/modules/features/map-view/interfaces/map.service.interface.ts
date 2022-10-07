@@ -1,3 +1,4 @@
+import { IDistrict } from "@app/services/storage/interfaces";
 import { Subject } from "rxjs";
 import { IMapTile } from "./map-tile.interface";
 
@@ -6,4 +7,6 @@ export interface IMapService {
   getCurrentCenter(): {x_cord: number, y_cord: number};
   getMap(): IMapTile[][];
   subscribeMap(): Subject<IMapTile[][]>;
+  getBlankDistrict(): IDistrict;
+  getBlankMapTile(): IMapTile;
 }

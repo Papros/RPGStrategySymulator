@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Inject, Injectable, OnDestroy, OnInit } from "@angular/core";
-import { IKingdom, IDistrict } from "@app/services/storage/interfaces";
+import { IKingdom, IDistrict, ResourceType, TerrainType } from "@app/services/storage/interfaces";
 import { GAME_STATE_MANAGER, IGameStateManager } from "@app/shared/game-state-manager";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
 import { Subject } from "rxjs";
@@ -27,6 +27,24 @@ export class MapService implements IMapService, OnInit, OnDestroy{
     this.subscribeForMapData();
     this.gameStateManager.fetchData();
     this.logger.info("MapService constructor.", this.logPrefix );
+  }
+
+  getBlankDistrict(): IDistrict {
+    return {
+      id: '0',
+      kingdomID: '0',
+      position: { x: 0, y: 0},
+      resource: { type: ResourceType.NOTHING },
+      terrain: { type: TerrainType.FIELDS },
+    }
+  }
+
+  getBlankMapTile(): IMapTile {
+    return {
+      id: '0',
+      position: { x: 0, y: 0},
+      district: this.getBlankDistrict(),
+    };
   }
 
   subscribeMap(): Subject<IMapTile[][]> {
@@ -83,6 +101,7 @@ export class MapService implements IMapService, OnInit, OnDestroy{
       id: "-1",
       kingdom: undefined,
       position: {x: -1,y: -1},
+      district: this.getBlankDistrict(),
     };
 
     for(let size_y = 0; size_y<y; size_y++) {
@@ -106,6 +125,7 @@ export class MapService implements IMapService, OnInit, OnDestroy{
           id: district.id,
           kingdom: this.kingdomMap.get(district.kingdomID),
           position: district.position,
+          district: district,
         };
       }
       this.mapSubject.next(this.map);
