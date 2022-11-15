@@ -1,0 +1,42 @@
+.admin-page-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    
+    .random-map {
+        display: block;
+        width: 80%;
+        margin: auto;
+        height: 10%;
+        background: #666;
+        cursor: pointer;
+        border: 1px solid #000;
+    }
+
+    .map-section {
+        flex: 10;
+        height: 100%;
+    }
+
+    .left-side-section {
+        left: 0;
+        width: 25%;
+    }
+
+    .right-side-section {
+        right: 0;
+        width: 20%;
+    }
+    
+    .left-section-hidden {
+        left: -24%;
+    }
+    
+    .right-side-section.hidden-section {
+        right: -19% !important;
+    }
+    
+
+}

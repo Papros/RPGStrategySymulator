@@ -1,14 +1,15 @@
-import { ChangeDetectorRef, Inject, Injectable, OnDestroy, OnInit } from "@angular/core";
-import { IKingdom, IDistrict, ResourceType, TerrainType } from "@app/services/storage/interfaces";
+import { Inject, Injectable, OnDestroy, OnInit } from "@angular/core";
+import { MapService, MAP_SERVICE } from "@app/services/storage/game";
+import { IKingdom, IDistrict,  IMap, ResourceType, TerrainType } from "@app/services/storage/interfaces";
 import { GAME_STATE_MANAGER, IGameStateManager } from "@app/shared/game-state-manager";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
-import { Subject } from "rxjs";
-import { Observable, Subscription } from "rxjs";
-import { IMapService } from "../interfaces";
+import { Subject, take } from "rxjs";
+import { Subscription } from "rxjs";
+import { IMapStateService } from "../interfaces";
 import { IMapTile } from "../interfaces/map-tile.interface";
 
 @Injectable()
-export class MapService implements IMapService, OnInit, OnDestroy{
+export class MapStateService implements IMapStateService, OnInit, OnDestroy{
 
   private readonly logPrefix = "MAP_SERVICE";
 
@@ -18,15 +19,25 @@ export class MapService implements IMapService, OnInit, OnDestroy{
   private districtMap: Map<string, IDistrict> = new Map<string, IDistrict>();
   private map: IMapTile[][] = [];
   private mapSubject: Subject<IMapTile[][]> = new Subject();
-  private mapSubscribtion$: Subscription = new Subscription;
+  public refreshMapTask: Subject<boolean> = new Subject();
+  private mapSubscription$: Subscription = new Subscription;
 
   constructor(
     @Inject(LOGGER_SERVICE) private logger: ILoggerService,
     @Inject(GAME_STATE_MANAGER) public gameStateManager: IGameStateManager,
+    @Inject(MAP_SERVICE) private mapService: MapService,
   ) {
     this.subscribeForMapData();
     this.gameStateManager.fetchData();
     this.logger.info("MapService constructor.", this.logPrefix );
+  }
+  
+  generateMapFromSeed(seed: string): void {
+    this.mapService.getRandomMap(seed).pipe(take(1)).subscribe((map: IMap) => { 
+      this.kingdomsList = map.kingdoms;
+      this.districtList = map.map;
+      this.buildMap();
+     });
   }
 
   getBlankDistrict(): IDistrict {
@@ -56,7 +67,8 @@ export class MapService implements IMapService, OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.mapSubscribtion$.unsubscribe();
+    this.mapSubscription$.unsubscribe();
+    this.mapSubject.complete();
   }
 
   subscribeForMapData(): void {
@@ -89,8 +101,8 @@ export class MapService implements IMapService, OnInit, OnDestroy{
         this.buildMap();
       }
     });
-    this.mapSubscribtion$.add(sub$_1);
-    this.mapSubscribtion$.add(sub$_2);
+    this.mapSubscription$.add(sub$_1);
+    this.mapSubscription$.add(sub$_2);
   }
 
   generateEmptyMap(x: number, y: number) : IMapTile[][] {
@@ -116,7 +128,7 @@ export class MapService implements IMapService, OnInit, OnDestroy{
   }
 
   buildMap(): void {
-    if(this.districtList.length > 0 && this.kingdomsList.length > 0) {
+    if(this.districtList.length > 0 && this.kingdomsList.length >= 0) {
       let lastDistrict = this.districtList[this.districtList.length - 1];
       this.map = this.generateEmptyMap(lastDistrict.position.x+1, lastDistrict.position.y+1);
 

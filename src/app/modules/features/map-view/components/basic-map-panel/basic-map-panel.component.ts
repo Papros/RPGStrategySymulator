@@ -1,12 +1,11 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, ChangeDetectorRef, ElementRef, ViewChild, Output, EventEmitter } from "@angular/core";
-import { SafeStyle } from "@angular/platform-browser";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, ChangeDetectorRef, Output, EventEmitter } from "@angular/core";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
 import { Subscription } from "rxjs";
-import { IMapService, IMapTile,  } from "../../interfaces";
-import { MAP_SERVICE } from "../../map-view.module.types";
+import { IMapStateService, IMapTile,  } from "../../interfaces";
+import { MAP_STATE_SERVICE } from "../../map-view.module.types";
 
 @Component({
-  selector: 'basic-map-panel',
+  selector: 'app-basic-map-panel',
   templateUrl: './basic-map-panel.component.html',
   styleUrls: ['./basic-map-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,8 +13,6 @@ import { MAP_SERVICE } from "../../map-view.module.types";
 export class BasicMapPanelComponent implements OnInit, OnDestroy {
   
   private readonly logPrefix = "BasicMapPanel"
-  public mapTiles: IMapTile[][] = [];
-  public mapSubscription$: Subscription = new Subscription();
 
   @Output() selectedMapTile = new EventEmitter<IMapTile>();
 
@@ -25,23 +22,18 @@ export class BasicMapPanelComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly cdr: ChangeDetectorRef,
-    @Inject(MAP_SERVICE) public mapService: IMapService,
+    @Inject(MAP_STATE_SERVICE) public mapStateService: IMapStateService,
     @Inject(LOGGER_SERVICE) private logger: ILoggerService,
   ) {
     this.logger.debug("Map constructor.", this.logPrefix );
   }
+  
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
 
   ngOnInit(): void {
     this.logger.debug("Map init.", this.logPrefix );
-    this.mapSubscription$ = this.mapService.subscribeMap().subscribe((map: IMapTile[][]) => {
-      this.mapTiles = map;
-      this.logger.debug(`Map update: [${this.mapTiles.length}][${this.mapTiles[0]?.length}]`, this.logPrefix );
-      this.cdr.markForCheck();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.mapSubscription$?.unsubscribe();
   }
 
   public selectMapTile(tile: IMapTile) {

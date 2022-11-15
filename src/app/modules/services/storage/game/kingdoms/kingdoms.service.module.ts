@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from "@angular/core";
-import { KINGDOMS_SERVICE } from "./kingdoms-service.module.types";
+import { KINGDOMS_SERVICE } from "./kingdoms.service.module.types";
 import { KingdomsService } from "./kingdoms.service";
 
 @NgModule()

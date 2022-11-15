@@ -8,5 +8,5 @@ export interface IGameDataService<T extends IGameDataItem> {
 
     clearItems(): boolean;
 
-    fetchItems(): Observable<T[]>;
+    fetchItems(): Observable<T[] | T>;
 }

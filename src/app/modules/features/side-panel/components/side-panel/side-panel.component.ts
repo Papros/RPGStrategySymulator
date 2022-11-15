@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from "@angular/core";
 
 @Component({
-    selector: 'side-panel',
+    selector: 'app-side-panel',
     templateUrl: './side-panel.component.html',
     styleUrls: ['./side-panel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

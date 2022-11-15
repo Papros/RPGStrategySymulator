@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from "@angular/core";
-import { IMapService, IMapTile, MAP_SERVICE } from "@app/features/map-view";
+import { IMapStateService, IMapTile, MAP_STATE_SERVICE } from "@app/features/map-view";
 import { IDistrict, IKingdom } from "@app/services/storage/interfaces";
 import { GAME_STATE_MANAGER, IGameStateManager } from "@app/shared/game-state-manager";
 import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
@@ -16,17 +16,17 @@ import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
     public kingdomsList: IKingdom[] = [];
     public map: IDistrict[] = [];
     public selectedDistrict: IMapTile;
-    public isLeftHidden = false;
-    public isRightHidden = false;
+    public isLeftHidden = true;
+    public isRightHidden = true;
 
     constructor(
       private readonly cdr: ChangeDetectorRef,
       @Inject(GAME_STATE_MANAGER) public gameStateManager: IGameStateManager,
-      @Inject(MAP_SERVICE) private mapService: IMapService,
+      @Inject(MAP_STATE_SERVICE) private mapStateService: IMapStateService,
       @Inject(LOGGER_SERVICE) private logger: ILoggerService,
     ) {
       this.gameStateManager.fetchData();
-      this.selectedDistrict = this.mapService.getBlankMapTile();
+      this.selectedDistrict = this.mapStateService.getBlankMapTile();
     }
 
     ngOnDestroy(): void {
@@ -48,6 +48,7 @@ import { ILoggerService, LOGGER_SERVICE } from "@app/shared/logger";
     public selectedTile(tile: IMapTile) {
       this.logger.debug(`Selected: ${tile.id}`, this.logPrefix);
       this.selectedDistrict = tile;
+      this.isRightHidden = false
       this.cdr.markForCheck();
     }
 

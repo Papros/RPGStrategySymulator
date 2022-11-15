@@ -8,12 +8,13 @@ import { AppRootComponent } from './components/app-root/app-root.component';
 import { AdminPageComponent, LoginPageComponent, MainMenuPageComponent, UserPageComponent } from './pages';
 import { LoggerModule } from '@app/shared/logger';
 import { BackendClientModule } from '@app/shared/backend-client';
-import { DistrictsServiceModule, KingdomsServiceModule } from '@app/services/storage/game';
+import { DistrictsServiceModule, KingdomsServiceModule, MapServiceModule } from '@app/services/storage/game';
 import { GameStateManagerModule } from '@app/shared/game-state-manager';
 import { HttpClientModule } from '@angular/common/http';
 import { MapPanelModule } from '@app/features/map-view';
 import { DistrictPanelModule } from '@app/features/district-panel';
 import { SidePanelModule } from '@app/features/side-panel';
+import { MapCreatorFormModule } from '../features/admins-tool/map-creator';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -31,6 +32,7 @@ import { SidePanelModule } from '@app/features/side-panel';
     HttpClientModule,
     DistrictPanelModule,
     SidePanelModule,
+    MapCreatorFormModule,
     MapPanelModule.forRoot(),
     BackendClientModule.forRoot(),
     LoaderModule.forRoot(),
@@ -38,6 +40,7 @@ import { SidePanelModule } from '@app/features/side-panel';
     KingdomsServiceModule.forRoot(),
     DistrictsServiceModule.forRoot(),
     GameStateManagerModule.forRoot(),
+    MapServiceModule.forRoot(),
   ],
   providers: PROVIDERS,
   bootstrap: [AppRootComponent]

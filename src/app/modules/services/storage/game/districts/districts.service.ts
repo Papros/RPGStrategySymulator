@@ -14,5 +14,5 @@ export class DistrictsService extends GameDataService<IDistrict>{
         request.pipe(take(1)).subscribe((data: IDistrict[]) => { this.items = data; this.logger.info('Districts API request.', this.loggerPrefix)});
         return request;
     }
-    
+
 }

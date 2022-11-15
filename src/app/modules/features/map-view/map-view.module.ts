@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { ModuleWithProviders, NgModule } from "@angular/core";
 import { BasicMapPanelComponent, MapCanvasComponent } from "./components";
-import { MAP_SERVICE } from "./map-view.module.types";
-import { MapService } from "./services";
+import { MAP_STATE_SERVICE } from "./map-view.module.types";
+import { MapStateService } from "./services";
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ export class MapPanelModule {
     return {
       ngModule: MapPanelModule,
       providers: [{
-        provide: MAP_SERVICE,
-        useClass: MapService,
+        provide: MAP_STATE_SERVICE,
+        useClass: MapStateService,
       }],
     };
   }

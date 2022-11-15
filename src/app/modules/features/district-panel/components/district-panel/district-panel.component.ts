@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, Input } from "@angular/core";
-import { IMapService, IMapTile, MAP_SERVICE } from "@app/features/map-view";
+import { IMapStateService, IMapTile, MAP_STATE_SERVICE } from "@app/features/map-view";
 
 @Component({
-    selector: 'district-panel',
+    selector: 'app-district-panel',
     templateUrl: './district-panel.component.html',
     styleUrls: ['./district-panel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,9 +11,9 @@ import { IMapService, IMapTile, MAP_SERVICE } from "@app/features/map-view";
     @Input() district: IMapTile;
 
     constructor(
-        @Inject(MAP_SERVICE) private readonly mapService: IMapService,
+        @Inject(MAP_STATE_SERVICE) private readonly mapStateService: IMapStateService,
     ) {
-        this.district = this.mapService.getBlankMapTile();
+        this.district = this.mapStateService.getBlankMapTile();
     }
 
   }
