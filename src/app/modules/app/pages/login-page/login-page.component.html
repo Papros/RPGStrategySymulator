@@ -1,37 +1,29 @@
+<div
+  id="login-page-container"
+  class="full-screen"
+  [style]="getBackgroundStyles()"
+>
+  <div class="center-box">
+    <ng-container *ngIf="!selectedUserType; else loginform">
+      <div class="title info">LOGIN PAGE</div>
 
-<div id="login-page-container" class="full-screen" [style] = "getBackgroundStyles()">
-    <div class="center-box">
-    
-        <ng-container *ngIf="!selectedUserType; else loginform">
-            <div class="title info">
-                LOGIN PAGE
-            </div>
-    
-            <div (click)="openLogin('player')" class="clickable app-button">
-                GRACZ
-            </div>
-    
-            <div (click)="openLogin('admin')" class="clickable app-button">
-                GM
-            </div>
-        </ng-container>
-    </div>
+      <div (click)="openLogin('player')" class="clickable app-button">
+        GRACZ
+      </div>
 
-    <div class="footer">
-        HiroVII - 2022
-    </div>
+      <div (click)="openLogin('admin')" class="clickable app-button">GM</div>
+    </ng-container>
+  </div>
+
+  <div class="footer">HiroVII - 2022</div>
 </div>
 
 <ng-template #loginform>
-    <div class="prompt">Logujesz się jako: {{ selectedUserType }}</div>
-    <input/>
-    <input/>
-    <div>
-        <div (click)="closeLogin()" class="clickable app-button">
-            BACK
-        </div>
-        <div (click)="login()" class="clickable app-button">
-            LOGIN
-        </div>
-    </div>
+  <div class="prompt">Logujesz się jako: {{ selectedUserType }}</div>
+  <input />
+  <input />
+  <div>
+    <div (click)="closeLogin()" class="clickable app-button">BACK</div>
+    <div (click)="login()" class="clickable app-button">LOGIN</div>
+  </div>
 </ng-template>

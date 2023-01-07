@@ -1,12 +1,14 @@
-import { Observable } from "rxjs";
-import { IGameDataItem } from "../../interfaces/generic";
+import { Observable } from 'rxjs';
+import { IGameDataItem } from '../../interfaces/generic';
 
 export interface IGameDataService<T extends IGameDataItem> {
-    getItems(): T[];
+  getItems(): T[];
 
-    getItem(id: string): T | null;
+  getItem(id: string): T | null;
 
-    clearItems(): boolean;
+  updateItems(newItems: T[]): void;
 
-    fetchItems(): Observable<T[] | T>;
+  clearItems(): boolean;
+
+  fetchItems(): Observable<T[] | T>;
 }

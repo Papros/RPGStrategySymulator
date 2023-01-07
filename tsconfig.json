@@ -18,28 +18,41 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "paths": {
       "@app/providers": ["src/app/modules/app/ioc/providers"],
       "@app/enums": ["src/app/modules/app/enums/index"],
       "@app/app-module": ["src/app/modules/app/app.module.ts"],
       "@app/pages": ["src/app/modules/app/pages/index"],
       "@app/features/map-view": ["src/app/modules/features/map-view/index"],
-      "@app/features/district-panel": ["src/app/modules/features/district-panel/index"],
+      "@app/features/district-panel": [
+        "src/app/modules/features/district-panel/index"
+      ],
       "@app/features/side-panel": ["src/app/modules/features/side-panel/index"],
-      "@app/features/admin-tools": ["src/app/modules/features/admin-tools/index"],
+      "@app/features/admin-tools": [
+        "src/app/modules/features/admins-tool/index"
+      ],
       "@app/shared/logger": ["src/app/modules/shared/logger/index"],
       "@app/shared/loader": ["src/app/modules/shared/loader/index"],
-      "@app/shared/loader-screen": ["src/app/modules/shared/loader-screen/index"],
-      "@app/shared/backend-client": ["src/app/modules/shared/backend-client/index"],
-      "@app/shared/game-state-manager": ["src/app/modules/shared/game-state-manager/index"],
+      "@app/shared/loader-screen": [
+        "src/app/modules/shared/loader-screen/index"
+      ],
+      "@app/shared/backend-client": [
+        "src/app/modules/shared/backend-client/index"
+      ],
+      "@app/shared/game-state-manager": [
+        "src/app/modules/shared/game-state-manager/index"
+      ],
       "@app/shared/translation": ["src/app/modules/shared/translation/index"],
-      "@app/services/storage/interfaces": ["src/app/modules/services/storage/interfaces/index"],
-      "@app/services/storage/generic": ["src/app/modules/services/storage/generic/index"],
-      "@app/services/storage/game": ["src/app/modules/services/storage/game/index"]
+      "@app/services/storage/interfaces": [
+        "src/app/modules/services/storage/interfaces/index"
+      ],
+      "@app/services/storage/generic": [
+        "src/app/modules/services/storage/generic/index"
+      ],
+      "@app/services/storage/game": [
+        "src/app/modules/services/storage/game/index"
+      ]
     }
   },
   "angularCompilerOptions": {

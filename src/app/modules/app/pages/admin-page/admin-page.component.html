@@ -1,16 +1,25 @@
 <div class="admin-page-container">
+  <app-side-panel
+    [isLeft]="true"
+    (hide)="hideSidePanel($event, true)"
+    class="left-side-section"
+    [ngClass]="{ 'left-section-hidden': isLeftHidden }"
+  >
+    <app-game-creator-form></app-game-creator-form>
+  </app-side-panel>
 
-    <app-side-panel [isLeft]="true" (hide)="hideSidePanel($event, true)" 
-        class="left-side-section" [ngClass]="{'left-section-hidden': isLeftHidden}">
-        <app-map-creator-form></app-map-creator-form>
-    </app-side-panel>
+  <div class="map-section">
+    <app-basic-map-panel
+      (selectedMapTile)="selectedTile($event)"
+    ></app-basic-map-panel>
+  </div>
 
-    <div class="map-section">
-        <app-basic-map-panel (selectedMapTile)="selectedTile($event)"></app-basic-map-panel>
-    </div>
-
-    <app-side-panel [isLeft]="false" (hide)="hideSidePanel($event, false)" 
-        class="right-side-section" [ngClass]="{'hidden-section': isRightHidden}">
-        <app-district-panel [district]="selectedDistrict" ></app-district-panel>
-    </app-side-panel>
+  <app-side-panel
+    [isLeft]="false"
+    (hide)="hideSidePanel($event, false)"
+    class="right-side-section"
+    [ngClass]="{ 'hidden-section': isRightHidden }"
+  >
+    <app-district-panel [district]="selectedDistrict"></app-district-panel>
+  </app-side-panel>
 </div>

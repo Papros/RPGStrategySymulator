@@ -1,6 +1,4 @@
-import { Provider } from "@angular/core";
-import { HANDLERS } from "./handlers";
+import { Provider } from '@angular/core';
+import { HANDLERS } from './handlers';
 
-export const PROVIDERS: Provider[] = [
-    ...HANDLERS,
-]
+export const PROVIDERS: Provider[] = [...HANDLERS];

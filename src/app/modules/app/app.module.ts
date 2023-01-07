@@ -5,16 +5,25 @@ import { LoaderModule } from '@app/shared/loader';
 import { LoaderScreenModule } from '@app/shared/loader-screen';
 import { AppRoutingModule } from './app-routing.module';
 import { AppRootComponent } from './components/app-root/app-root.component';
-import { AdminPageComponent, LoginPageComponent, MainMenuPageComponent, UserPageComponent } from './pages';
+import {
+  AdminPageComponent,
+  LoginPageComponent,
+  MainMenuPageComponent,
+  UserPageComponent,
+} from './pages';
 import { LoggerModule } from '@app/shared/logger';
 import { BackendClientModule } from '@app/shared/backend-client';
-import { DistrictsServiceModule, KingdomsServiceModule, MapServiceModule } from '@app/services/storage/game';
+import {
+  DistrictsServiceModule,
+  KingdomsServiceModule,
+  MapServiceModule,
+} from '@app/services/storage/game';
 import { GameStateManagerModule } from '@app/shared/game-state-manager';
 import { HttpClientModule } from '@angular/common/http';
 import { MapPanelModule } from '@app/features/map-view';
 import { DistrictPanelModule } from '@app/features/district-panel';
 import { SidePanelModule } from '@app/features/side-panel';
-import { MapCreatorFormModule } from '../features/admins-tool/map-creator';
+import { MapCreatorFormModule } from '@app/features/admin-tools';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -31,18 +40,18 @@ import { MapCreatorFormModule } from '../features/admins-tool/map-creator';
     LoaderScreenModule,
     HttpClientModule,
     DistrictPanelModule,
-    SidePanelModule,
-    MapCreatorFormModule,
-    MapPanelModule.forRoot(),
-    BackendClientModule.forRoot(),
-    LoaderModule.forRoot(),
     LoggerModule.forRoot(),
+    BackendClientModule.forRoot(),
+    MapCreatorFormModule.forRoot(),
     KingdomsServiceModule.forRoot(),
     DistrictsServiceModule.forRoot(),
+    LoaderModule.forRoot(),
+    SidePanelModule,
+    MapPanelModule.forRoot(),
     GameStateManagerModule.forRoot(),
     MapServiceModule.forRoot(),
   ],
   providers: PROVIDERS,
-  bootstrap: [AppRootComponent]
+  bootstrap: [AppRootComponent],
 })
-export class AppModule { }
+export class AppModule {}

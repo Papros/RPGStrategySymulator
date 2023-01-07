@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { SafeStyle } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ILoggerService, LOGGER_SERVICE } from '@app/shared/logger';
@@ -8,7 +15,7 @@ import { AppRoutes } from '../../enums';
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
   private readonly loggerPrefix = 'LoginPageComponent';
@@ -18,9 +25,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   constructor(
     private readonly ref: ChangeDetectorRef,
     private readonly router: Router,
-    @Inject(LOGGER_SERVICE) private readonly logger: ILoggerService,
-  ){
-    this.background_imageURL = "tavern_background.jpg";
+    @Inject(LOGGER_SERVICE) private readonly logger: ILoggerService
+  ) {
+    this.background_imageURL = 'tavern_background.jpg';
     this.selectedUserType = null;
   }
 
@@ -36,24 +43,26 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.ref.markForCheck();
   }
 
-  public login():void {
-    switch(this.selectedUserType) {
-        case "player": this.router.navigate([AppRoutes.UserPanel]); break;
-        case "admin": this.router.navigate([AppRoutes.GameMastePanel]); break;
-        default: this.router.navigate([AppRoutes.Login]);
+  public login(): void {
+    switch (this.selectedUserType) {
+      case 'player':
+        this.router.navigate([AppRoutes.UserPanel]);
+        break;
+      case 'admin':
+        this.router.navigate([AppRoutes.GameMasterPanel]);
+        break;
+      default:
+        this.router.navigate([AppRoutes.Login]);
     }
-
   }
 
-  public ngOnDestroy(): void {
-  }
+  public ngOnDestroy(): void {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public getBackgroundStyles(): SafeStyle {
     return {
-        'background-image': `url(assets/images/${this.background_imageURL})`,
+      'background-image': `url(assets/images/${this.background_imageURL})`,
     };
   }
 }
