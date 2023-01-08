@@ -27,6 +27,11 @@ const routes: Routes = [
     component: AdminPageComponent,
   },
   {
+    path: AppRoutes.AdminPanel,
+    loadChildren: () =>
+      import('@app/admin-module').then((m) => m.AdminModuleModule),
+  },
+  {
     path: AppRoutes.UserPanel,
     component: UserPageComponent,
   },

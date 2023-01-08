@@ -3,4 +3,5 @@ export enum AppRoutes {
   Login = 'login',
   GameMasterPanel = 'gm-panel',
   UserPanel = 'player-panel',
+  AdminPanel = 'admin-panel',
 }

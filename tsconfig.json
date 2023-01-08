@@ -20,6 +20,9 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
+      "@app/admin-module": [
+        "src/app/modules/libs/modules/admin-module/src/index.ts"
+      ],
       "@app/providers": ["src/app/modules/app/ioc/providers"],
       "@app/enums": ["src/app/modules/app/enums/index"],
       "@app/app-module": ["src/app/modules/app/app.module.ts"],
