@@ -4,18 +4,14 @@ import { Subscription, pluck, filter } from 'rxjs';
 @Component({
   selector: 'app-main-menu-page',
   templateUrl: './main-menu-page.component.html',
-  styleUrls: ['./main-menu-page.component.scss'] 
+  styleUrls: ['./main-menu-page.component.scss'],
 })
 export class MainMenuPageComponent implements OnInit, OnDestroy {
   private readonly loggerPrefix = 'MainMenuComponent';
 
-  constructor(
-  ){
-  }
+  constructor() {}
 
-  public ngOnDestroy(): void {
-  }
+  public ngOnDestroy(): void {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 }

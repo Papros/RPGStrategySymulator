@@ -1,6 +1,6 @@
 export enum AppRoutes {
-    MainMenu = "main-menu",
-    Login = "login",
-    GameMastePanel = "gm-panel",
-    UserPanel = "player-panel"
+  MainMenu = 'main-menu',
+  Login = 'login',
+  GameMasterPanel = 'gm-panel',
+  UserPanel = 'player-panel',
 }

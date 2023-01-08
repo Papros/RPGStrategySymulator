@@ -1,0 +1,11 @@
+MAP FORM
+
+<div></div>
+<form [formGroup]="mapCreatorForm">
+  <div class="form-row">
+    <input type="text" formControlName="generatorSeed" />
+    <button (click)="generateMap()">Submit</button>
+
+    <button (click)="getRandomSeed()">Random</button>
+  </div>
+</form>

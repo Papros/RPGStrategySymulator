@@ -1,1 +1,25 @@
-{{ map | json }}
+<div class="user-page-container">
+  <app-side-panel
+    [isLeft]="true"
+    (hide)="hideSidePanel($event, true)"
+    class="left-side-section"
+    [ngClass]="{ 'left-section-hidden': isLeftHidden }"
+  >
+    LEWY
+  </app-side-panel>
+
+  <div class="map-section">
+    <app-basic-map-panel
+      (selectedMapTile)="selectedTile($event)"
+    ></app-basic-map-panel>
+  </div>
+
+  <app-side-panel
+    [isLeft]="false"
+    (hide)="hideSidePanel($event, false)"
+    class="right-side-section"
+    [ngClass]="{ 'hidden-section': isRightHidden }"
+  >
+    <app-district-panel [district]="selectedDistrict"></app-district-panel>
+  </app-side-panel>
+</div>

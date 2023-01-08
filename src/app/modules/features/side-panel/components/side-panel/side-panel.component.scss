@@ -1,0 +1,59 @@
+:host {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.9;
+    background-color: #824615;
+    height: 100%;
+}
+
+.left-side-section {
+    left: 0;
+    height: 100%;
+    width: 25%;
+    border: 2px dashed #e7dfd9;
+}
+
+.left-section-hidden {
+    left: -24%;
+}
+
+.right-section-hidden {
+    right: 119%;
+}
+
+.right-side-section {
+    right: 0;
+    height: 100%;
+    width: 20%;
+}
+
+$button-size: 1.5vw;
+
+.hide-button {
+    display: block;
+    border-radius: 5px;
+    background-color: #565656;
+    width: $button-size;
+    height: calc(3*$button-size);
+    align-items: center;
+    top: calc(0.5*$button-size);
+    position: absolute;
+    text-align: center;
+}
+
+.hide-button:hover {
+    filter: brightness(2);
+    cursor:pointer;
+}
+
+.left-side {
+    .hide-button {
+        right: calc(-0.8 * $button-size);
+    }
+}
+
+.right-side {
+    .hide-button {
+        left: calc(-0.8 * $button-size);
+    }
+}
