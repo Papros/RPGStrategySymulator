@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedPackModule } from '@app/shared-pack-module';
 import { AdminModuleRoutes } from './enums';
 import { AdminContentLayoutComponent } from './layout';
 import { GameListComponent } from './pages/game-list/game-list.component';
@@ -45,7 +46,12 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    SharedPackModule,
+    RouterModule.forChild(routes),
+  ],
   exports: [RouterModule],
   declarations: [
     AdminContentLayoutComponent,

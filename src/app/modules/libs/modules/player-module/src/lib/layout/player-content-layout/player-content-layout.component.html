@@ -1,0 +1,11 @@
+<h1>Player PANEL</h1>
+MENU
+
+<nav>
+  <a [routerLink]="PlayerRoutes.OngoingGameList">Lista gier</a>
+  <a [routerLink]="PlayerRoutes.JoinGameForm">Nowa gra</a>
+  <a [routerLink]="PlayerRoutes.OldGames">Archiwum</a>
+  <a [routerLink]="PlayerRoutes.Settings">Ustawienia</a>
+</nav>
+
+<router-outlet (activate)="onActivate($event)" #outlet="outlet"></router-outlet>

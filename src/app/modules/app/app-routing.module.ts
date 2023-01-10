@@ -33,7 +33,8 @@ const routes: Routes = [
   },
   {
     path: AppRoutes.UserPanel,
-    component: UserPageComponent,
+    loadChildren: () =>
+      import('@app/player-module').then((m) => m.PlayerModuleModule),
   },
   {
     path: '**',
