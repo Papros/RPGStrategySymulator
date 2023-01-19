@@ -1,8 +1,9 @@
+import { MenuIcons } from '../enums';
 import { SideMenuOption } from './side-menu-option.interface';
 
 export interface SideMenuSection {
   options: SideMenuOption[];
-  sectionLabel?: string;
-  sectionIcon?: string;
+  label: string;
+  icon?: MenuIcons;
   disabled?: boolean;
 }

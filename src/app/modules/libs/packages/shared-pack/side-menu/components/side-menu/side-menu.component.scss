@@ -1,0 +1,63 @@
+@import "src/styles/colors.scss";
+
+:host {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.85;
+  background-color: $side-panel-background-color;
+  height: 100%;
+  width: 20%;
+}
+
+.side-menu-main-container {
+  .side-menu-inner-container {
+    margin: 2%;
+    padding: 5%;
+    border: 2px solid $side-panel-accent-color;
+    border-radius: 10px;
+
+    .side-menu-section-label {
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+}
+
+.side-menu-menu-section {
+  padding: 2%;
+
+  .side-menu-menu-option {
+    border-radius: 10px;
+    display: block;
+    padding: 8% 5%;
+    font-size: 40px;
+    background-color: $side-panel-background-color;
+    filter: brightness(105%);
+    cursor: pointer;
+  }
+
+  .side-menu-menu-option:hover {
+    filter: brightness(85%);
+  }
+}
+
+$button-size: 1.5vw;
+
+.hide-button {
+  display: block;
+  border-radius: 5px;
+  background-color: #565656;
+  width: $button-size;
+  font-size: 20px;
+  height: calc(3 * $button-size);
+  align-items: center;
+  top: calc(0.5 * $button-size);
+  position: absolute;
+  text-align: center;
+  right: calc(-0.8 * $button-size);
+}
+
+.hide-button:hover {
+  filter: brightness(2);
+  cursor: pointer;
+}

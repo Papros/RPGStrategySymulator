@@ -24,6 +24,7 @@ import { MapPanelModule } from '@app/features/map-view';
 import { DistrictPanelModule } from '@app/features/district-panel';
 import { SidePanelModule } from '@app/features/side-panel';
 import { MapCreatorFormModule } from '@app/features/admin-tools';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -36,6 +37,7 @@ import { MapCreatorFormModule } from '@app/features/admin-tools';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     LoaderScreenModule,
     HttpClientModule,

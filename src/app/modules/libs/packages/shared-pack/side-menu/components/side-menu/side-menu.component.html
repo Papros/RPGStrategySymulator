@@ -1,14 +1,49 @@
 <div class="side-menu-main-container">
-  <div class="side-menu-section">
-    <nav>
-      <a routerLink="/admin-panel/games">Lista gier</a>
-      <a routerLink="/admin-panel/new-game">Nowa gra</a>
-      <a routerLink="/admin-panel/resources">Zasoby</a>
-      <a routerLink="admin-panel/new-resources">Nowy zasób</a>
-    </nav>
+  <div
+    class="hide-button"
+    *ngIf="onsideHideButton || !leaveIconVisible"
+    (click)="toggleClose()"
+  >
+    <img [src]="hideIcon()" />
+  </div>
+
+  <nav *ngIf="menuItems">
+    <div class="side-menu-inner-container" *ngFor="let section of menuItems">
+      <ng-container
+        *ngTemplateOutlet="menuSection; context: { $implicit: section }"
+      ></ng-container>
+    </div>
+  </nav>
+
+  <div class="side-menu-menu-section">
+    <div
+      *ngIf="!onsideHideButton || true"
+      class="side-menu-menu-option"
+      (click)="toggleClose()"
+    >
+      <img [src]="hideIcon()" /> Hide
+    </div>
   </div>
 </div>
 
-<ng-template #menuSection> </ng-template>
+<ng-template #menuSection let-section>
+  <div class="side-menu-section-label">
+    <span>{{ section.label }}</span>
+  </div>
+  <div class="side-menu-menu-section" *ngFor="let option of section.options">
+    <ng-container
+      *ngTemplateOutlet="menuOption; context: { $implicit: option }"
+    ></ng-container>
+  </div>
+</ng-template>
 
-<ng-template #menuOption> </ng-template>
+<ng-template #menuOption let-option>
+  <div class="side-menu-menu-option" [routerLink]="option.path">
+    <img
+      *ngIf="option.icon"
+      [src]="getIconPath(option.icon)"
+      [alt]="option.icon"
+    />
+    {{ option.label }}
+  </div>
+</ng-template>
