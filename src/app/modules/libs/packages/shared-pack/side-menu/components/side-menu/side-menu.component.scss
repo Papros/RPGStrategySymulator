@@ -1,63 +1,107 @@
 @import "src/styles/colors.scss";
 
-:host {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.85;
-  background-color: $side-panel-background-color;
-  height: 100%;
-  width: 20%;
-}
-
 .side-menu-main-container {
-  .side-menu-inner-container {
-    margin: 2%;
-    padding: 5%;
+  background-color: $side-panel-background-color-second;
+  opacity: 0.85;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  $button-size: 1.5vw;
+  box-sizing: border-box;
+
+  .side-menu-section-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .hide-button-section {
+    align-self: flex-end;
+    width: 100%;
+  }
+
+  .side-menu-menu-section {
     border: 2px solid $side-panel-accent-color;
     border-radius: 10px;
+    background-color: $side-panel-background-color;
 
     .side-menu-section-label {
       text-align: center;
-      font-size: 50px;
+      top: 0;
+    }
+
+    .side-menu-menu-option {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      fill: #fff;
+      color: #fff;
+
+      .side-menu-menu-option-icon {
+        width: 50px;
+        margin: 30px 10px;
+        fill: #fff;
+        color: #fff;
+        filter: invert(1);
+      }
+
+      .side-menu-menu-option-label {
+        font-size: 70%;
+        width: 80%;
+        margin: auto;
+        box-sizing: content-box;
+      }
+    }
+
+    .side-menu-menu-option-container:hover {
+      background-color: $side-panel-background-accent-second;
+    }
+
+    .side-menu-menu-option.active-menu-option {
+      background-color: $side-panel-background-accent;
+    }
+  }
+
+  .hide-button-section:hover {
+    background-color: $side-panel-background-accent;
+  }
+}
+
+.menu-main-container-hidden {
+  padding: 2% 2% 2% 2%;
+  border-right: 2px solid $side-panel-accent-color;
+  .side-menu-section-label {
+    span {
+      display: none;
+    }
+  }
+
+  .side-menu-menu-section {
+    .side-menu-menu-option {
+      .side-menu-menu-option-icon {
+      }
+
+      .side-menu-menu-option-label {
+        display: none;
+      }
     }
   }
 }
 
-.side-menu-menu-section {
-  padding: 2%;
-
-  .side-menu-menu-option {
+.menu-main-container-visible {
+  .side-menu-section-label {
+    border: 1px solid $side-panel-accent-color;
     border-radius: 10px;
-    display: block;
-    padding: 8% 5%;
-    font-size: 40px;
-    background-color: $side-panel-background-color;
-    filter: brightness(105%);
-    cursor: pointer;
   }
 
-  .side-menu-menu-option:hover {
-    filter: brightness(85%);
+  .side-menu-menu-section {
+    .side-menu-menu-option {
+      .side-menu-menu-option-icon {
+      }
+
+      .side-menu-menu-option-label {
+        padding: 0 15px;
+      }
+    }
   }
-}
-
-$button-size: 1.5vw;
-
-.hide-button {
-  display: block;
-  border-radius: 5px;
-  background-color: #565656;
-  width: $button-size;
-  font-size: 20px;
-  height: calc(3 * $button-size);
-  align-items: center;
-  top: calc(0.5 * $button-size);
-  position: absolute;
-  text-align: center;
-  right: calc(-0.8 * $button-size);
-}
-
-.hide-button:hover {
-  filter: brightness(2);
-  cursor: pointer;
 }

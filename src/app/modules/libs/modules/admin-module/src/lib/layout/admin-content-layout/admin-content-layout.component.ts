@@ -14,7 +14,7 @@ export class AdminContentLayoutComponent {
 
   adminMenuLayout: SideMenuSection[] = [
     {
-      label: 'Menu',
+      label: '',
       options: [
         {
           label: 'Lista gier',
@@ -32,7 +32,7 @@ export class AdminContentLayoutComponent {
           path: AdminModuleRoutes.ResourceList,
         },
         {
-          label: 'Nowy zasób',
+          label: 'Warsztat',
           icon: MenuIcons.DrawAndDesign,
           path: AdminModuleRoutes.NewResourceForm,
         },
