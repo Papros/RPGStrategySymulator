@@ -1,11 +1,14 @@
-<h1>Player PANEL</h1>
-MENU
+<div class="player-panel-main-container">
+  <div class="player-panel-container left-container">
+    <app-side-menu [menuItems]="playerMenuLayout"></app-side-menu>
+  </div>
 
-<nav>
-  <a [routerLink]="PlayerRoutes.OngoingGameList">Lista gier</a>
-  <a [routerLink]="PlayerRoutes.JoinGameForm">Nowa gra</a>
-  <a [routerLink]="PlayerRoutes.OldGames">Archiwum</a>
-  <a [routerLink]="PlayerRoutes.Settings">Ustawienia</a>
-</nav>
+  <div class="player-panel-container mid-container">
+    <router-outlet
+      (activate)="onActivate($event)"
+      #outlet="outlet"
+    ></router-outlet>
+  </div>
 
-<router-outlet (activate)="onActivate($event)" #outlet="outlet"></router-outlet>
+  <div class="player-panel-container right-container"></div>
+</div>

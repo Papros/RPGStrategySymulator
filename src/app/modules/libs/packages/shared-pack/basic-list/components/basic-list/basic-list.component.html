@@ -1,0 +1,60 @@
+<div class="basic-list-container">
+  <div class="basic-list-header flex-row">
+    <ng-container *ngFor="let column of configuration.columns">
+      <ng-container
+        *ngTemplateOutlet="columnHeader; context: { $implicit: column }"
+      ></ng-container>
+    </ng-container>
+  </div>
+
+  <div class="basic-list-content">
+    <ng-container *ngFor="let item of listItems">
+      <ng-container
+        *ngTemplateOutlet="listRow; context: { $implicit: item }"
+      ></ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #columnHeader let-column>
+  <div class="basic-list-header-label" *ngIf="column.headerName">
+    {{ column.headerName }}
+  </div>
+</ng-template>
+
+<ng-template #listRow let-item let-config>
+  <div class="basic-list-row flex-row">
+    <ng-container *ngFor="let column of configuration.columns">
+      <ng-container
+        *ngTemplateOutlet="
+          itemValue_Text;
+          context: { $implicit: item[column.field] }
+        "
+      ></ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #itemValue_Text let-value>
+  <div class="basic-text-value">
+    {{ value }}
+  </div>
+</ng-template>
+
+<ng-template #itemValue_Number let-value>
+  <div class="basic-number-value">
+    {{ value }}
+  </div>
+</ng-template>
+
+<ng-template #itemValue_Picture let-value>
+  <div class="basic-picture-value">
+    {{ value }}
+  </div>
+</ng-template>
+
+<ng-template #itemValue_Action let-value let-action>
+  <div class="basic-action-value" (click)="(action)">
+    {{ value }}
+  </div>
+</ng-template>

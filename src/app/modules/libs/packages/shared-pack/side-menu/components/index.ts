@@ -1,1 +1,1 @@
-export * from './side-menu/side-menu.component';
+export { SideMenuComponent } from './side-menu/side-menu.component';

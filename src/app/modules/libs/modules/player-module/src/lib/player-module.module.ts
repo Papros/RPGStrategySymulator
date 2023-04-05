@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MapCreatorFormModule } from '@app/features/admin-tools';
+import { MapPanelModule } from '@app/features/map-view';
+import { SharedPackModule } from '@app/shared-pack-module';
 import { PlayerModuleRoutes } from './enums';
 import { PlayerContentLayoutComponent } from './layout/player-content-layout/player-content-layout.component';
-import { OngoingGameListComponent } from './pages/during-game-list/ongoing-game-list.component';
 import { EndedGameListComponent } from './pages/ended-game-list/ended-game-list.component';
 import { JoinGameFormComponent } from './pages/join-game-form/join-game-form.component';
+import { OngoingGameListComponent } from './pages/ongoing-game-list';
 import { PlayerSettingsComponent } from './pages/player-settings/player-settings.component';
 
 export const routes: Routes = [
@@ -45,7 +47,14 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    SharedPackModule,
+    MapPanelModule,
+    MapCreatorFormModule,
+    RouterModule.forChild(routes),
+  ],
   exports: [RouterModule],
   declarations: [
     PlayerContentLayoutComponent,

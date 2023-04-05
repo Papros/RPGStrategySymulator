@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MapCreatorFormModule } from '@app/features/admin-tools';
 import { SharedPackModule } from '@app/shared-pack-module';
 import { AdminModuleRoutes } from './enums';
 import { AdminContentLayoutComponent } from './layout';
@@ -50,6 +51,7 @@ export const routes: Routes = [
     CommonModule,
     HttpClientModule,
     SharedPackModule,
+    MapCreatorFormModule,
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
